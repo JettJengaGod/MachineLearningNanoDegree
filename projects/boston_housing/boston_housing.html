@@ -11894,19 +11894,19 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#### TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11971,7 +11971,7 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: I think RM will have a strong correlation with MDEV. The higher RM is the more likely MDEV will be higher. I think the opposite is true for LSTAT, a higher LSTAT will result in a lower MDEV. Finally I think PTRATIO will have a slightly negative impact on MDEV as more students per teacher is not desirable, but usually not a dealbreaker like the other two can be.</strong></p>
+<p><strong>Answer: I think RM will have a strong correlation with MDEV. The higher RM is the more likely MDEV will be higher. I think the opposite is true for LSTAT, a higher LSTAT will result in a lower MDEV because lower class areas are generally cheaper. Finally I think PTRATIO will have a slightly negative impact on MDEV as more students per teacher is not desirable, but usually not a dealbreaker like the other two can be.</strong></p>
 
 </div>
 </div>
@@ -13807,6 +13807,7 @@ MSZoWNIzxhgTNCzpGWOMCRr/D1p5A+8uUOj0AAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> Grid search is a technique which allows you calculate the best hyper-peramaters(depth, gamma)
 to get the best model which results in the best F1 score. This can be applied to be able to successfully determing which hyperperamaters to use without having to guess. Some examples of these would be the depth of a tree or the gamma of an SVN.</p>
+<p>You start by defining reasonable values for each of your hyperperamaters. Grid search trains one at a time for each of the values in the cartesian prodcut of the matrix. The scorer function determines an F1 score for each of the combinations and outputs the one with the highest score.</p>
 
 </div>
 </div>
@@ -13833,7 +13834,8 @@ to get the best model which results in the best F1 score. This can be applied to
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> K-fold cross validation is a process that breaks the training data into k different parts then trains the data using a certian number of the parts as training and the rest for cross validation. The data that is used for validation changes as you run k different iterations of cross validation to rotate which parts are used for validation and which are used for training. This allows none of the training data to be "wasted" on cross validation as it is all used for training our model. Grid search might end up biased if it excludes a subset of data to be used for training, but the k-fold cross validation allows for the model to be trainied using all of the data avalible to us. (Excluding the testing data of course)</p>
+<p><strong>Answer: </strong> K-fold cross validation is a process that breaks the training data into k different parts then trains the data using all of the parts for training except for one (k-1_ that is used for cross validation. The data that is used for validation changes as you run k different iterations of cross validation to rotate which parts are used for validation and which are used for training each part is used for testing one time and training every other time. The results are then averaged together and we use this as our final value. This allows none of the training data to be "wasted" on cross validation as it is all used for training our model.</p>
+<p>Grid search might end up biased if it excludes a subset of data to be used for training, but the k-fold cross validation allows for the model to be trainied using all of the data avalible to us. (Excluding the testing data of course) This allows you to avoid a stiuation where you accidentally chose a training set that represented the overall data poorly. By folding the data you can have many unique training sets that are much more likely to represent the data well.</p>
 
 </div>
 </div>
