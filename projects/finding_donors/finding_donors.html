@@ -13153,7 +13153,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="c1"># TODO: Calculate accuracy, precision and recall</span>
 <span class="n">TP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">income</span><span class="p">)</span>
-<span class="n">FP</span> <span class="o">=</span> <span class="n">income</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">FP</span> <span class="o">=</span> <span class="n">income</span><span class="p">[(</span><span class="n">income</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">prediction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">TN</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">FN</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">TP</span><span class="o">+</span><span class="n">TN</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">income</span><span class="p">))</span>
@@ -13250,7 +13250,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </li>
 <li><p>What makes this model a good candidate for the problem, given what you know about the data?</p>
 </li>
-<li>The data set is not too large and it seems like the decision boundry is going to be non linear</li>
+<li>Because this is a binary classification problem, drawing a decision boundry between the two possible options seems like a job suited for an SVM.</li>
 </ul>
 </li>
 <li><p>Decision tree</p>
@@ -13268,7 +13268,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </li>
 <li><p>What makes this model a good candidate for the problem, given what you know about the data?</p>
 </li>
-<li>The size of the data set and there being only a few features make decision tree seem to be a good option.</li>
+<li>The size of the data set and the fact that we already have a one hot encding of our features. </li>
 </ul>
 </li>
 <li><p>K Nearest Neighbors</p>
@@ -13286,7 +13286,7 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </li>
 <li><p>What makes this model a good candidate for the problem, given what you know about the data?</p>
 </li>
-<li>Although the data set is large, the fact that there are only a few features make me think K-nearest neighibors would be a good option for this problem.</li>
+<li>Charity donations seem like they would be done by mostly people of similar status and class in society, so the nearest neighbors of people who donate would be likely to be donors as well. </li>
 </ul>
 </li>
 </ol>
@@ -14232,7 +14232,7 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> Decision tree classifier is the pretty clear winner here on training time and testing time, but is slightly outclassed by SVM in the Fscore and accuracy score. Overall however I think decision tree is still the best option as it is a the best fit as an algorithm for the data and still very close to the SVM in terms of testing score. The decision tree classifier also is a good fit for the data as there are not very many different features and the decision tree is a good way of splitting based on these few features.</p>
+<p><strong>Answer: </strong> Decision tree classifier is the pretty clear winner here on training time and testing time, but is slightly outclassed by SVM in the Fscore and accuracy score. Overall however I think decision tree is still the best option as it is a the best fit as an algorithm for the data due to the fact that it can handle much larger amounts of data with almost no increase in training time and still very close to the SVM in terms of testing score. The decision tree classifier also is a good fit for the data as there are not very many different features and the decision tree is a good way of splitting based on these few features.</p>
 
 </div>
 </div>
